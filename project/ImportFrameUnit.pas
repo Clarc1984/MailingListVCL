@@ -59,7 +59,8 @@ implementation
 {$R *.dfm}
 
 uses
-  System.IOUtils, UnitMockData, MainDataModule, ResolveConflictsDialogUnit;
+  System.IOUtils, UnitMockData, MainDataModule, ResolveConflictsDialogUnit,
+  UnitInterbaseCreateDB;
 
 procedure TFrameImport.btnLoadNewEmailsClick(Sender: TObject);
 var
@@ -124,6 +125,7 @@ begin
       else
       begin
         { TODO: U¿yj sta³ej: UnitInterbaseCreateDB.IB_INSERT_CONTACTS_SQL }
+        //UnitInterbaseCreateDB.IB_INSERT_CONTACTS_SQL
         FDQuery2.SQL.Text := 'INSERT INTO Contacts' +
           ' (email, firstname, lastname, company, create_timestamp)' +
           'VALUES (''' + email + ''',' + '''' + mtabEmailsFirstName.Value +
