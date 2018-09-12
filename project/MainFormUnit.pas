@@ -68,7 +68,8 @@ resourcestring
   SWelcomeScreen = 'Ekran powitalny';
   SDatabaseRequireUpgrade =
     'Proszê najpierw uruchomiæ skrypt buduj¹cy strukturê bazy danych.';
-
+  SDatabaVersionMismsatch = 'B³êdna wersja bazy danych. Proszê zaktualizowaæ strukturê ' +
+        'bazy. Oczekiwana wersja bazy: %d, aktualna wersja bazy: %d';
 
 procedure TFormMain.btnCreateDatabaseStructuresClick(Sender: TObject);
 begin
@@ -229,11 +230,9 @@ begin
     if VersionNr <> DatabaseNumber then
     begin
       tmr1.Enabled := False;
-      { TODO: Wy³¹cz jako sta³a resourcestring }
+      { DONE: Wy³¹cz jako sta³a resourcestring }
       { TODO: Zamieñ ShowMessage na informacje na ekranie powitalnym }
-      msg1 := 'B³êdna wersja bazy danych. Proszê zaktualizowaæ strukturê ' +
-        'bazy. Oczekiwana wersja bazy: %d, aktualna wersja bazy: %d';
-      ShowMessage(Format(msg1,[DatabaseNumber, VersionNr]));
+      ShowMessage(Format(SDatabaVersionMismsatch,[DatabaseNumber, VersionNr]));
       tmr1.Enabled := True;
     end;
   end;
